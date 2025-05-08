@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Крипто-Трекер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Відстеження криптовалют</h1>
+    <input type="text" id="symbolInput" placeholder="Введіть символ (наприклад BTC)">
+    <button onclick="fetchCrypto()">Отримати дані</button>
+
+    <div id="result" class="crypto-info" style="display: none;">
+        <img id="logo" src="" alt="Логотип">
+        <h2 id="name"></h2>
+        <p><strong>Ціна:</strong> <span id="price"></span> $</p>
+        <p><strong>Зміна за 24 год:</strong> <span id="change"></span> %</p>
+        <p><a id="website" href="#" target="_blank">Офіційний сайт</a></p>
+        <p><a id="cmcPage" href="#" target="_blank">Перейти на сторінку CoinMarketCap</a></p>
+        <p id="description"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
