@@ -1,5 +1,5 @@
 <?php
-$apiKey = 'eea078cd-0731-49de-b914-3ec421ae9583'; // API ключ
+$apiKey = ''; // API ключ
 $baseUrl = 'https://pro-api.coinmarketcap.com/v1';
 
 if (isset($_GET['symbol'])) {
