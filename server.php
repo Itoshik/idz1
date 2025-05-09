@@ -5,7 +5,7 @@ $baseUrl = 'https://pro-api.coinmarketcap.com/v1';
 if (isset($_GET['symbol'])) {
     $symbol = strtoupper($_GET['symbol']);
     
-    // Запит до CoinMarketCap для отримання інформації про криптовалюту
+   
     $url = "$baseUrl/cryptocurrency/info?symbol=$symbol";
     $headers = [
         "X-CMC_PRO_API_KEY: $apiKey",
@@ -20,15 +20,16 @@ if (isset($_GET['symbol'])) {
     $response = curl_exec($ch);
     curl_close($ch);
 
-    // Перевірка на помилки
+    
     if ($response === false) {
         echo json_encode(["error" => "Не вдалося отримати дані від CoinMarketCap"]);
         exit;
     }
+    
 
     $data = json_decode($response, true);
 
-    // Якщо криптовалюта не знайдена
+    
     if (!isset($data['data'][$symbol])) {
         echo json_encode(["error" => "Криптовалюту не знайдено"]);
         exit;
@@ -36,7 +37,7 @@ if (isset($_GET['symbol'])) {
 
     $cryptoData = $data['data'][$symbol];
 
-    // Додатковий запит для отримання курсу та зміни за 24 години
+
     $url = "$baseUrl/cryptocurrency/quotes/latest?symbol=$symbol";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -46,7 +47,7 @@ if (isset($_GET['symbol'])) {
     $response = curl_exec($ch);
     curl_close($ch);
 
-    // Перевірка на помилки
+
     if ($response === false) {
         echo json_encode(["error" => "Не вдалося отримати дані про курс"]);
         exit;
@@ -61,7 +62,7 @@ if (isset($_GET['symbol'])) {
 
     $priceInfo = $priceData['data'][$symbol]['quote']['USD'];
     
-    // Формуємо відповідь
+ 
     $response = [
         'name' => $cryptoData['name'],
         'symbol' => $symbol,
